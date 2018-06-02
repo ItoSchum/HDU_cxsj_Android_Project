@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">testforbus</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="title_activity_busline">BuslineActivity</string>
+    <string name="no_result">对不起，没有搜索到相关数据！</string>
+    <string name="cityname">公交搜索</string>
+    <string name="stationname">站点搜索</string>
+</resources>
