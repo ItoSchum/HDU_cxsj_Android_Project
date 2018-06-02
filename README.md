@@ -1,1 +1,2 @@
-HDU CXSJ Android Bus_Router
+# HDU CXSJ Android App: A Bus Router
+> Based on Demo App
