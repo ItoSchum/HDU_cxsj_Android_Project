@@ -5,4 +5,5 @@
     <string name="no_result">对不起，没有搜索到相关数据！</string>
     <string name="cityname">公交搜索</string>
     <string name="stationname">站点搜索</string>
+    <string name="searchbrn">点下去！！</string>
 </resources>

@@ -14,7 +14,7 @@
         android:orientation="horizontal" >
 
         <EditText
-            android:id="@+id/busName"
+            android:id="@+id/busorstationName"
             android:layout_width="140dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
@@ -23,13 +23,19 @@
 
         <Button
             android:id="@+id/Search"
-            android:text="@string/cityname"
+            android:text="@string/searchbrn"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:layout_weight="1" />
+
     </LinearLayout>
 
+    <!--<Button-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="@string/searchbrn"-->
+        <!--android:id="@+id/Search" />-->
 
     <!-- 引入布局文件 -->
     <com.amap.api.maps.MapView
