@@ -6,4 +6,10 @@
     <string name="cityname">公交搜索</string>
     <string name="stationname">站点搜索</string>
     <string name="searchbrn">点下去！！</string>
+    <string name="title_search">Search</string>
+    <string name="title_route">Route</string>
+    <string name="title_pay">Pay</string>
+    <string name="search2">点我</string>
+    <string name="search3">再点我</string>
+    <string name="search4">搜啦</string>
 </resources>

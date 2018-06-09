@@ -2,6 +2,7 @@ package ff_app.testforbus;
 
 import android.Manifest;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 
 import android.support.v4.app.ActivityCompat;
@@ -31,6 +32,7 @@ import com.amap.api.services.core.AMapException;
 import java.util.List;
 
 
+
 public class MainActivity extends AppCompatActivity implements ActivityCompat.OnRequestPermissionsResultCallback,
         BusLineSearch.OnBusLineSearchListener, BusStationSearch.OnBusStationSearchListener {
 
@@ -42,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
             Manifest.permission.ACCESS_FINE_LOCATION,
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
             Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.CHANGE_WIFI_STATE
             // Manifest.permission.READ_PHONE_STATE
     };
 
@@ -60,6 +63,7 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
 
     private int lineerror = 0;
     private int stationerror = 0;
+
 
 
     /*
@@ -101,7 +105,7 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
         }
         init();
         final TextView NameText = (TextView) findViewById(R.id.busorstationName);
-        Button searchbtn = (Button) findViewById(R.id.Search);
+        Button searchbtn = (Button) findViewById(R.id.Search1);
         searchbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -115,7 +119,27 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
             }
         });
 
+        bombtninit();
+
     }
+
+
+    private void bombtninit(){
+        Button btn1=(Button)findViewById(R.id.bombtn1);
+        Button btn2=(Button)findViewById(R.id.bombtn2);
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it =new Intent();
+                it.setClass(MainActivity.this,BusrouteActivity.class);
+                startActivity(it);
+                MainActivity.this.finish();
+            }
+        });
+        Button btn3=(Button)findViewById(R.id.bombtn3);
+    }
+
+
 
 
     /*
@@ -316,7 +340,8 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
     private StringBuffer stationinfo(String[][] stationlines, int which) {
         StringBuffer a = new StringBuffer();
         for (int i = 0; i < stationlines[which].length; i++) {
-            a.append(i + 1).append('.').append(stationlines[which][i]).append('\n');
+            a.append(i + 1).append('.');
+            a.append(stationlines[which][i]).append('\n');
         }
         return a;
     }
@@ -346,6 +371,7 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
     protected void onResume() {
         super.onResume();
         //在activity执行onResume时执行mMapView.onResume ()，重新绘制加载地图
+        mMapView.onResume();
     }
 
     @Override

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BusrouteActivity"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal" >
+
+        <EditText
+            android:id="@+id/startpoint"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="2"
+            android:hint="请输入起点"
+            android:gravity="center"
+            android:completionThreshold="3"/>
+        <Button
+            android:id="@+id/Search2"
+            android:text="@string/search2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:gravity="center" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal" >
+
+        <EditText
+            android:id="@+id/endpoint"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="2"
+            android:hint="请输入终点"
+            android:layout_marginLeft="5dp"
+            android:gravity="center"/>
+
+        <Button
+            android:id="@+id/Search3"
+            android:text="@string/search3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:gravity="center" />
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/Search4"
+        android:text="@string/search4"/>
+
+    <LinearLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:orientation="vertical" >
+
+        <com.amap.api.maps.MapView
+            android:id="@+id/map"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent">
+        </com.amap.api.maps.MapView>
+    </LinearLayout>
+
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="0dp"-->
+        <!--android:layout_weight="1"-->
+        <!--android:orientation="vertical">-->
+
+        <!--<ListView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:id="@+id/listview">-->
+
+        <!--</ListView>-->
+
+    <!--</LinearLayout>-->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:id="@+id/routeinfo"/>
+
+    <LinearLayout
+        android:id="@+id/linearlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="bottom"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/bombtn1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="Search"
+            android:layout_weight="1" />
+        <Button
+            android:id="@+id/bombtn2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="Route"
+            android:layout_weight="1"/>
+        <Button
+            android:id="@+id/bombtn3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="Pay"
+            android:layout_weight="1"/>
+    </LinearLayout>
+
+</LinearLayout>
