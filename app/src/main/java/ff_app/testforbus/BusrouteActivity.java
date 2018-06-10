@@ -72,7 +72,9 @@ public class BusrouteActivity extends AppCompatActivity implements PoiSearch.OnP
     private boolean ewill = false;
 
     private List<BusPath> buspathItems = null;
-    private List<BusStep> bussteps = null;
+    private List<BusStep> bussteps1 = null;
+    private List<BusStep> bussteps2 = null;
+    private List<BusStep> bussteps3 = null;
 
     private ListView listView;
     private TextView routeinfo;
@@ -153,7 +155,6 @@ public class BusrouteActivity extends AppCompatActivity implements PoiSearch.OnP
                 }
             }
         });
-//        listView=(ListView)findViewById(R.id.listview);
         init();
     }
 
@@ -242,34 +243,26 @@ public class BusrouteActivity extends AppCompatActivity implements PoiSearch.OnP
     public void onBusRouteSearched(BusRouteResult result, int rCode) {
         if (rCode == 1000) {
             if (result != null && result.getPaths().size() > 0) {
-                aMap.clear();// 清理地图上的所有覆盖物
                 buspathItems = result.getPaths();
-                bussteps = buspathItems.get(0).getSteps();
+                //选取三条路线
+                if (buspathItems.get(0) != null) {
+                    bussteps1 = buspathItems.get(0).getSteps();
+                } else {
+                    bussteps1 = null;
+                }
+                if (buspathItems.get(1) != null) {
+                    bussteps2 = buspathItems.get(1).getSteps();
+                } else {
+                    bussteps2 = null;
+                }
+                if (buspathItems.get(2) != null) {
+                    bussteps3 = buspathItems.get(2).getSteps();
+                } else {
+                    bussteps3 = null;
+                }
                 semarker(start);
                 semarker(end);
-                for (int i = 0; i < bussteps.size(); i++) {
-                    if (bussteps.get(i).getWalk() != null) {
-                        List<LatLng> lwalk = new ArrayList<LatLng>();
-                        LatLonPoint a = bussteps.get(i).getWalk().getOrigin();
-                        lwalk.add(new LatLng(a.getLatitude(), a.getLongitude()));
-                        a = bussteps.get(i).getWalk().getDestination();
-                        lwalk.add(new LatLng(a.getLatitude(), a.getLongitude()));
-                        walkline(lwalk);
-                    }
-                    if (bussteps.get(i).getBusLines() != null) {
-                        List<LatLng> lbus = new ArrayList<LatLng>();
-                        System.out.println("yyy");
-                        if(bussteps.get(i).getBusLines().size()>0) {
-                            List<LatLonPoint> polybus = bussteps.get(i).getBusLines().get(0).getPolyline();
-                            System.out.println("xxxx");
-                            for (int j = 0; j < polybus.size(); j++) {
-                                lbus.add(new LatLng(polybus.get(j).getLatitude(), polybus.get(j).getLongitude()));
-                            }
-                            busline(lbus);
-                        }
-                    }
-                }
-                showinfo();
+                chooseinfo();
             }
         } else {
             Toast.makeText(BusrouteActivity.this, "出错啦", Toast.LENGTH_SHORT).show();
@@ -293,22 +286,101 @@ public class BusrouteActivity extends AppCompatActivity implements PoiSearch.OnP
         mMapView.getMap().addPolyline(po);
     }
 
-    private void showinfo() {
-        StringBuffer a = new StringBuffer();
-        a.append("步行距离：").append(buspathItems.get(0).getWalkDistance()).append('m').append('\n');
-        int q=0;
-        for (int i = 0; i < bussteps.size(); i++) {
-            if(bussteps.get(i).getBusLines().size()>0) {
-//                a.append(q + 1).append('.');
-                a.append(bussteps.get(i).getBusLines().get(0).getBusLineName()).append('\n');
-                a.append(bussteps.get(i).getBusLines().get(0).getDepartureBusStation().getBusStationName());
-                a.append("---");
-                a.append(bussteps.get(i).getBusLines().get(0).getArrivalBusStation().getBusStationName());
-                a.append('\n');
-//                q++;
-            }
+    private void huatu(BusPath b) {
+        aMap.clear();
+//        for (int i = 0; i < b.size(); i++) {
+//            if (bussteps1.get(i).getWalk() != null) {
+//                List<LatLng> lwalk = new ArrayList<LatLng>();
+//                LatLonPoint a = b.get(i).getWalk().getOrigin();
+//                lwalk.add(new LatLng(a.getLatitude(), a.getLongitude()));
+//                a = b.get(i).getWalk().getDestination();
+//                lwalk.add(new LatLng(a.getLatitude(), a.getLongitude()));
+//                walkline(lwalk);
+//            }
+//            if (b.get(i).getBusLines() != null) {
+//                List<LatLng> lbus = new ArrayList<LatLng>();
+//                if (b.get(i).getBusLines().size() > 0) {
+//                    List<LatLonPoint> polybus = b.get(i).getBusLines().get(0).getPolyline();
+//                    for (int j = 0; j < polybus.size(); j++) {
+//                        lbus.add(new LatLng(polybus.get(j).getLatitude(), polybus.get(j).getLongitude()));
+//                    }
+//                    busline(lbus);
+//                }
+//            }
+//        }
+        BusRouteOverlay busRouteOverlay = new BusRouteOverlay(this, aMap, b, start, end);
+        busRouteOverlay.removeFromMap();//去掉DriveLineOverlay上的线段和标记。
+        busRouteOverlay.addToMap(); //添加驾车路线添加到地图上显示。
+        busRouteOverlay.zoomToSpan();//移动镜头到当前的视角。
+        busRouteOverlay.setNodeIconVisibility(true);//是否显示路段节点图标
+    }
+
+    private void chooseinfo() {
+        String[] a = new String[3];
+        if (bussteps1 != null) {
+            a[0] = "1." + "步行距离：" + buspathItems.get(0).getWalkDistance() + 'm' + '\n' + "耗时约：" +
+                    buspathItems.get(0).getDuration() / 60 + "min";
         }
-        System.out.println(a);
+        if (bussteps2 != null) {
+            a[1] = "2." + "步行距离：" + buspathItems.get(1).getWalkDistance() + 'm' + '\n' + "耗时约：" +
+                    buspathItems.get(1).getDuration() / 60 + "min";
+        } else {
+            a[1] = "2.没啦！";
+        }
+        if (bussteps3 != null) {
+            a[2] = "3." + "步行距离：" + buspathItems.get(2).getWalkDistance() + 'm' + '\n' + "耗时约：" +
+                    buspathItems.get(2).getDuration() / 60 + "min";
+        } else {
+            a[2] = "2.没啦！";
+        }
+        AlertDialog.Builder builder = new AlertDialog.Builder(BusrouteActivity.this);
+        builder.setTitle("请选择路线");
+        builder.setSingleChoiceItems(a, 0, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                switch (which) {
+                    case 0:
+                        showinfo(bussteps1, 0);
+                        huatu(buspathItems.get(which));
+                        dialog.dismiss();
+                        break;
+                    case 1:
+                        showinfo(bussteps2, 1);
+                        huatu(buspathItems.get(which));
+                        dialog.dismiss();
+                        break;
+                    case 2:
+                        showinfo(bussteps3, 2);
+                        huatu(buspathItems.get(which));
+                        dialog.dismiss();
+                        break;
+                    default:
+                        break;
+                }
+            }
+        });
+        builder.setNegativeButton("返回", null);
+        builder.show();
+    }
+
+    private void showinfo(List<BusStep> b, int which) {
+        StringBuffer a = new StringBuffer();
+        a.append("步行距离：").append(buspathItems.get(which).getWalkDistance()).append('m').append('\n');
+        a.append("耗时约：").append(buspathItems.get(which).getDuration() / 60).append("min").append('\n');
+        for (int i = 0; i < b.size(); i++) {
+            if (b.get(i).getBusLines().size() > 0) {
+                a.append(b.get(i).getBusLines().get(0).getBusLineName()).append('\n');
+                a.append("上车站：");
+                a.append(b.get(i).getBusLines().get(0).getDepartureBusStation().getBusStationName());
+                a.append("---").append("下车站：");
+                a.append(b.get(i).getBusLines().get(0).getArrivalBusStation().getBusStationName());
+                a.append('\n');
+            }
+
+
+
+
+        }
         routeinfo.setText(a);
         routeinfo.setMovementMethod(ScrollingMovementMethod.getInstance());
         routeinfo.setVisibility(View.VISIBLE);
