@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".BusrouteActivity">
+    tools:context=".MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,62 +14,28 @@
         android:orientation="horizontal">
 
         <EditText
-            android:id="@+id/startpoint"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:id="@+id/busorstationName"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:layout_weight="2"
-            android:completionThreshold="3"
-            android:gravity="center"
-            android:hint="请输入起点" />
+            android:hint="请输入公交或站点名称" />
 
         <Button
-            android:id="@+id/Search2"
-            android:layout_width="0dp"
+            android:id="@+id/Search1"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/search2" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_gravity="center_horizontal"
-        android:orientation="horizontal">
-
-        <EditText
-            android:id="@+id/endpoint"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="5dp"
-            android:layout_weight="2"
-            android:gravity="center"
-            android:hint="请输入终点" />
-
-        <Button
-            android:id="@+id/Search3"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/search3" />
+            android:text="@string/searchbrn" />
 
     </LinearLayout>
-
-    <Button
-        android:id="@+id/Search4"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="@string/search4" />
 
     <LinearLayout
         android:id="@+id/content"
-        android:layout_width="match_parent"
+        android:layout_width="fill_parent"
         android:layout_height="0dp"
-        android:layout_weight="2"
+        android:layout_weight="1"
         android:orientation="vertical">
 
         <com.amap.api.maps.MapView
@@ -77,25 +43,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"></com.amap.api.maps.MapView>
     </LinearLayout>
-
-    <!--<LinearLayout-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="0dp"-->
-    <!--android:layout_weight="1"-->
-    <!--android:orientation="vertical">-->
-
-    <!--<ListView-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:id="@+id/listview">-->
-
-    <!--</ListView>-->
-
-    <!--</LinearLayout>-->
-    <TextView
-        android:id="@+id/routeinfo"
-        android:layout_width="match_parent"
-        android:layout_height="75dp" />
 
     <LinearLayout
         android:id="@+id/linearlayout"
@@ -125,5 +72,12 @@
             android:layout_weight="1"
             android:text="Pay" />
     </LinearLayout>
+
+    <!--<android.support.design.widget.BottomNavigationView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="50dp"-->
+    <!--android:layout_gravity="bottom"-->
+    <!--android:id="@+id/bottomtab">-->
+    <!--</android.support.design.widget.BottomNavigationView>-->
 
 </LinearLayout>

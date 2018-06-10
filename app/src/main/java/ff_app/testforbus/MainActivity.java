@@ -32,7 +32,6 @@ import com.amap.api.services.core.AMapException;
 import java.util.List;
 
 
-
 public class MainActivity extends AppCompatActivity implements ActivityCompat.OnRequestPermissionsResultCallback,
         BusLineSearch.OnBusLineSearchListener, BusStationSearch.OnBusStationSearchListener {
 
@@ -47,6 +46,7 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
             Manifest.permission.CHANGE_WIFI_STATE
             // Manifest.permission.READ_PHONE_STATE
     };
+
 
     private static final int thatgood = 2048;
     private String citycode = "0571";
@@ -63,7 +63,6 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
 
     private int lineerror = 0;
     private int stationerror = 0;
-
 
 
     /*
@@ -124,22 +123,20 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
     }
 
 
-    private void bombtninit(){
-        Button btn1=(Button)findViewById(R.id.bombtn1);
-        Button btn2=(Button)findViewById(R.id.bombtn2);
+    private void bombtninit() {
+        Button btn1 = (Button) findViewById(R.id.bombtn1);
+        Button btn2 = (Button) findViewById(R.id.bombtn2);
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent it =new Intent();
-                it.setClass(MainActivity.this,BusrouteActivity.class);
+                Intent it = new Intent();
+                it.setClass(MainActivity.this, BusrouteActivity.class);
                 startActivity(it);
                 MainActivity.this.finish();
             }
         });
-        Button btn3=(Button)findViewById(R.id.bombtn3);
+        Button btn3 = (Button) findViewById(R.id.bombtn3);
     }
-
-
 
 
     /*

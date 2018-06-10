@@ -376,6 +376,10 @@ public class BusrouteActivity extends AppCompatActivity implements PoiSearch.OnP
                 a.append(b.get(i).getBusLines().get(0).getArrivalBusStation().getBusStationName());
                 a.append('\n');
             }
+
+
+
+
         }
         routeinfo.setText(a);
         routeinfo.setMovementMethod(ScrollingMovementMethod.getInstance());
