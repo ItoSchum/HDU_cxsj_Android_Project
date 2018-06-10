@@ -25,7 +25,7 @@
         android:layout_toEndOf="@+id/curRemain"
         android:layout_weight="1"
         android:gravity="center"
-        android:text="0.00" />
+        android:text="remain" />
 
     <EditText
         android:id="@+id/rechargeNum"
