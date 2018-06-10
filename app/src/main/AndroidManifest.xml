@@ -39,6 +39,7 @@
         <service android:name="com.amap.api.location.APSService" />
 
         <activity android:name=".BusrouteActivity"></activity>
+        <activity android:name=".PayActivity"></activity>
     </application>
 
 </manifest>

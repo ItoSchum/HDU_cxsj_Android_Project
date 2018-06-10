@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 
+import android.net.Uri;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 
@@ -418,6 +419,12 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
 
     }
 
+    public void openPayActivity(View view) {
+        Intent i = new Intent(this, PayActivity.class);
+        startActivity(i);
+    }
+
 
 }
+
 
