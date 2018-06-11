@@ -33,23 +33,27 @@
 ### 3.1 Overall
 
 - **Sequence**
-	![](/Users/shenito/Desktop/Screen Shot 2018-06-11 at 08.50.22.png
-)
+![OverallScreenshot](media/OverallScreenshot.png)
+
 
 - **Overall Directory**
-	![](/Users/shenito/Desktop/7E83203F-7AB3-46A9-825F-AE556501D850.png)
+![7E83203F-7AB3-46A9-825F-AE556501D850](media/7E83203F-7AB3-46A9-825F-AE556501D850.png)
+
 
 ### 3.2 MAIN View
 
 - activity_main.xml
-	![](/Users/shenito/Desktop/99572E33-C306-4B6C-8975-94A57728E131.png)
+![99572E33-C306-4B6C-8975-94A57728E131](media/99572E33-C306-4B6C-8975-94A57728E131.png)
+
 - activity_busroute.xml
-	![](/Users/shenito/Desktop/E3DA81EE-47B0-49EC-BA76-FDC4D62633C8.png)
+![E3DA81EE-47B0-49EC-BA76-FDC4D62633](media/E3DA81EE-47B0-49EC-BA76-FDC4D62633C8.png)
+
 
 ### 3.3 PAY View
 
 - activity_payment.xml
-	![](/Users/shenito/Desktop/6D87122D-7AC3-4E3D-AEDD-A09C03E95EC8.png)  
+![6D87122D-7AC3-4E3D-AEDD-A09C03E95E](media/6D87122D-7AC3-4E3D-AEDD-A09C03E95EC8.png)
+
 
 
 ## 4. Improvement Orientation
