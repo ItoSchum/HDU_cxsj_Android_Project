@@ -3,7 +3,7 @@
 
 - **Reference:** <http://a.amap.com/lbs/static/unzip/Android_Map_Doc/index.html>
 
-## 1. App Funtion
+## 1. App Function
 	
 1. 公共交通线路查询，了解公交运行路线
 2. 公共交通站点查询，自动定位周边站点，显示周边站点所有公交线路
